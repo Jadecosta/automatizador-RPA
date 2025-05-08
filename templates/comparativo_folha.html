@@ -1,0 +1,127 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<form id="comparativo-form" method="POST">
+    <h1 id="h1_comparativo">Consultas Banco</h1><br>
+    
+    <div class="form-row">
+        <div class="form-group">
+            <label id="label-mes" class="bold-label" for="mes">Mês:</label>
+            <input type="number" id="mes" name="mes" min="1" max="12" required>
+        </div>
+        <div class="form-group">
+            <label id="label-ano" class="bold-label" for="ano">Ano:</label>
+            <input type="number" id="ano" name="ano" min="2022" max="2025" required>
+        </div>
+        <div class="form-group">
+            <label class="bold-label" for="tabelas-select">Tabelas:</label>
+            <div class="dropdown-container-tabelas">
+                <button id="dropdownTabelasButton" class="dropdown-button-tabelas" type="button">
+                    Selecione uma Tabela <i class="fas fa-chevron-down"></i>
+                </button>
+                <ul id="dropdownTabelasMenu" class="dropdown-menu-tabelas">
+                    {% for tabela in tabelas %}
+                        <li data-value="{{ tabela }}">{{ tabela }}</li>
+                    {% endfor %}  
+                </ul>
+                <input type="hidden" id="tabelas-select" name="tabelas">
+            </div>
+        </div>
+    </div>
+
+    <label id="label-drop" class="bold-label" for="tabelas">Selecione uma Consulta:</label>
+    <div class="dropdown-container">
+        <div id="dropdown-button" class="dropdown-button" onclick="toggleDropdown()">
+            Selecione uma opção <i class="fas fa-chevron-down"></i>
+        </div>
+        <ul class="dropdown-menu">
+            <li value="Analitico">ANALÍTICO</li>
+            <li value="RH">RH</li>
+            <li value="Margem">MARGEM</li>
+            <li value="Referencias Servidores">REFERÊNCIAS SERVIDORES (PROMOÇÃO)</li>
+
+            <optgroup label="FOLHA ABERTA">FOLHA ABERTA</optgroup>
+            <li value="Folha Aberta - Comparativo Servidor Mês Atual | Anterior">COMPARATIVO SERVIDOR MÊS ATUAL | ANTERIOR</li>
+            <li value="Folha Aberta - Comparativo Servidor Mês Anterior | Atual">COMPARATIVO SERVIDOR MÊS ANTERIOR | ATUAL</li>
+            <li value="Folha Aberta - Rubrica por Órgão">RUBRICA POR ÓRGÃO</li>
+            <li value="Folha Aberta - Rubricas">RUBRICAS</li>
+
+            <optgroup label="FOLHA FECHADA">FOLHA FECHADA</optgroup>
+            <li value="aba1">COMPARATIVO SERVIDOR MÊS ATUAL | ANTERIOR</li>
+            <li value="aba2">COMPARATIVO SERVIDOR MÊS ANTERIOR | ATUAL</li>
+            <li value="aba3">RUBRICA POR ÓRGÃO</li>
+            <li value="aba4">RUBRICAS</li>
+        </ul>
+    </div>
+
+
+    <div class="form-row">
+            <button type="submit" id="button-aba1" name="acao" value="aba1">
+                GERAR
+            </button>
+    </div><br>
+</form>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const dropdownTabelasButton = document.getElementById("dropdownTabelasButton");
+    const dropdownTabelasMenu = document.getElementById("dropdownTabelasMenu");
+    const dropdownTabelasItems = dropdownTabelasMenu.querySelectorAll("li");
+    const tabelasInput = document.getElementById("tabelas-select");
+
+    // Abrir/Fechar o dropdown ao clicar no botão
+    dropdownTabelasButton.addEventListener("click", function (event) {
+        dropdownTabelasMenu.classList.toggle("active");
+        event.stopPropagation(); 
+    });
+
+    // Selecionar um item do dropdown
+    dropdownTabelasItems.forEach(item => {
+        item.addEventListener("click", function (event) {
+            dropdownTabelasButton.innerHTML = this.textContent + ' <i class="fas fa-chevron-down"></i>';
+            tabelasInput.value = this.dataset.value; 
+            dropdownTabelasMenu.classList.remove("active");
+            event.stopPropagation();
+        });
+    });
+
+    // Fecha o dropdown ao clicar fora dele
+    document.addEventListener("click", function (event) {
+        if (!dropdownTabelasButton.contains(event.target) && !dropdownTabelasMenu.contains(event.target)) {
+            dropdownTabelasMenu.classList.remove("active");
+        }
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const dropdownButton = document.querySelector('.dropdown-button');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    // Adiciona evento de clique a cada item no menu dropdown
+    dropdownMenu.querySelectorAll('li').forEach(item => {
+        item.addEventListener('click', function() {
+            // Atualiza o texto do botão do dropdown para refletir a opção selecionada, sem adicionar ícone
+            dropdownButton.textContent = this.textContent;
+            
+            // Fecha o dropdown
+            dropdownMenu.classList.remove('active');
+        });
+    });
+
+    // Fecha o dropdown se clicar fora dele
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.dropdown-container')) {
+            dropdownMenu.classList.remove('active');
+        }
+    });
+
+    // Toggle Dropdown ao clicar no botão
+    dropdownButton.addEventListener('click', function() {
+        dropdownMenu.classList.toggle('active');
+    });
+});
+
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,7 @@
+Pago;Matricula;Nome;Regime;Orgao;Indenizacao;ProcessoSEI;Parecer;Observacao
+não;1234567;João Silva;Temporário;seduc;R$ 5.000,00;56445121211;Parecer em análise;Alguma observação aqui
+não;1234567;João Silva;Estatutario;seduc;R$ 300,00;lei 24/2;Parecer em análise;Alguma observação aqui
+não;1234567;João Silva;Estatutario;seduc;R$ 279,68;lei 24/2;Parecer em análise;Alguma observação aqui
+não;8765432;Maria Oliveira;Estatutario;sead;R$ 3.200,00;lei 24/2;Parecer em análise;Alguma observação aqui
+não;7895457;José Costa;Estatutario;sead;R$ 4.200,00;lei 24/2;Parecer em análise;Alguma observação aqui
+

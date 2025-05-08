@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+<form id="uploadForm" action="/iapepi" method="post" enctype="multipart/form-data">
+    <h1>Processar Arquivos - IAPEP</h1>
+    <div class="form-row">
+        <div class="form-group">
+            <label for="arquivo1" class="bold-label">Selecione o arquivo ISEDmmaa.TXT:</label>
+            <input type="file" id="arquivo1" name="arquivo1" accept=".txt" required>
+        </div><br>
+        <div class="form-group">
+            <label for="arquivo2" class="bold-label">Selecione o arquivo ISPDmmaa.TXT:</label>
+            <input type="file" id="arquivo2" name="arquivo2" accept=".txt" required>
+        </div>
+    </div><br><br>
+    <button type="submit" class="button-processar">Processar</button><br>
+    <!-- Área para exibir mensagens -->
+    <div id="mensagem" class="mensagem"></div>
+
+    <!-- Link para download do arquivo de saída -->
+    <div id="downloadLink" style="display: none;">
+        <p>O arquivo foi gerado com sucesso!</p>
+        <a id="arquivoGerado" href="#" download>Baixar Arquivo Processado</a>
+    </div>
+</form>
+
+
+
+{% endblock %}

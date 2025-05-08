@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block content %}
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+<form id="operationalization-form">
+    <h1 class="h1-operacionalizacao">Operacionalização</h1><br><br>
+    <div class="form-row">
+        <div class="form-group">
+            <label for="module" class="bold-label">Módulo:</label><br>
+            <select id="module" onchange="populateOperationTypes(); updateDownloadLink();">
+                <option value="">Selecione um módulo</option>
+                <option value="pessoas">Pessoas</option>
+                <!--<option value="seguranca">Segurança</option>-->
+                <option value="folha">Folha</option>
+                <option value="funprev">Funprev</option>
+                <!-- <option value="tabelas_basicas">Tabelas Básicas</option>-->
+                <!-- Adicione mais opções de módulos conforme necessário -->
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label for="operation-type" class="bold-label">Tipo de Operacionalização:</label><br>
+            <select id="operation-type" onchange="updateDownloadLink();">
+                <option value="">Selecione um tipo</option>
+                <!-- Opções populadas dinamicamente com JavaScript -->
+            </select>
+        </div>
+    </div><br>
+    
+    
+    <div class="form-row">
+        <div class="form-group">
+            <label for="username" class="bold-label">Usuário SIAPE:</label><br>
+            <input type="text" id="username" placeholder="Digite seu usuário"><br><br>
+        </div>
+        <div class="form-group">
+            <label for="password" class="bold-label">Senha SIAPE:</label><br>
+            <input type="password" id="password" placeholder="Digite sua senha"><br><br><br>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="file" id="file-upload" accept=".xlsx"><br><br>
+    </div><br>
+
+    <div class="form-row">
+        <div class="form-group">
+            <button type="button" class="button-start"onclick="executeScript()">Executar Script</button><br>
+        </div>
+        <div class="form-group">
+            <button type="button" class="button-stop" onclick="stopScript()">Interromper Script</button>
+            
+        </div>
+    </div><br>
+
+    <progress id="progress-bar" value="0" max="100"><span id="progress-text">0%</span></progress><br><br>
+    <a id="downloadLink" class="downloadOpera-button" href="#" style="display:none;">Baixar Modelo</a><br>
+</form>
+
+
+{% endblock %}

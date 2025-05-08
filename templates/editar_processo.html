@@ -1,0 +1,232 @@
+{% extends "layout.html" %}
+{% block content %}
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+
+<form id="processo-form" method="POST" action="/salvar_edicao">
+    <h1 id="h1_cadastroProcesso">Editar Processo</h1><br>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="periodo" class="bold-label">Selecione o período:</label>
+            <select id="periodo" name="periodo">
+                <option value="Jan/2025" {% if processo.periodo == "Jan/2025" %}selected{% endif %}>Jan/2025</option>
+                <option value="Fev/2025" {% if processo.periodo == "Fev/2025" %}selected{% endif %}>Fev/2025</option>
+                <option value="Mar/2025" {% if processo.periodo == "Mar/2025" %}selected{% endif %}>Mar/2025</option>
+                <option value="Abr/2025" {% if processo.periodo == "Abr/2025" %}selected{% endif %}>Abr/2025</option>
+                <option value="Mai/2025" {% if processo.periodo == "Mai/2025" %}selected{% endif %}>Mai/2025</option>
+                <option value="Jun/2025" {% if processo.periodo == "Jun/2025" %}selected{% endif %}>Jun/2025</option>
+                <option value="Jul/2025" {% if processo.periodo == "Jul/2025" %}selected{% endif %}>Jul/2025</option>
+                <option value="Ago/2025" {% if processo.periodo == "Ago/2025" %}selected{% endif %}>Ago/2025</option>
+                <option value="Set/2025" {% if processo.periodo == "Set/2025" %}selected{% endif %}>Set/2025</option>
+                <option value="Out/2025" {% if processo.periodo == "Out/2025" %}selected{% endif %}>Out/2025</option>
+                <option value="Nov/2025" {% if processo.periodo == "Nov/2025" %}selected{% endif %}>Nov/2025</option>
+                <option value="Dez/2025" {% if processo.periodo == "Dez/2025" %}selected{% endif %}>Dez/2025</option>
+            </select><br><br>
+        </div>
+
+        <div class="form-group">
+            <label for="numero_processo" class="bold-label">Digite o número do processo:</label>
+            <input type="text" id="numero_processo" name="Número_Processo" value="{{ processo.Número_Processo }}" required><br><br>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="orgaos" class="bold-label">Selecione o órgão:</label>
+            <select id="orgaos-dropdown" name="orgaos">
+                <option value="">Selecione um órgão</option>
+                <option value="ADAPI" {% if processo.Órgãos == "ADAPI" %}selected{% endif %}>ADAPI</option>
+                <option value="ADH" {% if processo.Órgãos == "ADH" %}selected{% endif %}>ADH</option>
+                <option value="AGESPISA" {% if processo.Órgãos == "AGESPISA" %}selected{% endif %}>AGESPISA</option>
+                <option value="AGRESP" {% if processo.Órgãos == "AGRESP" %}selected{% endif %}>AGRESP</option>
+                <option value="ATIPI" {% if processo.Órgãos == "ATIPI" %}selected{% endif %}>ATIPI</option>
+                <option value="BEP" {% if processo.Órgãos == "BEP" %}selected{% endif %}>BEP</option>
+                <option value="CBMPI" {% if processo.Órgãos == "CBMPI" %}selected{% endif %}>CBMPI</option>
+                <option value="CCOM" {% if processo.Órgãos == "CCOM" %}selected{% endif %}>CCOM</option>
+                <option value="CENDROGAS" {% if processo.Órgãos == "CENDROGAS" %}selected{% endif %}>CENDROGAS</option>
+                <option value="CEPM" {% if processo.Órgãos == "CEPM" %}selected{% endif %}>CEPM</option>
+                <option value="CGEPI" {% if processo.Órgãos == "CGEPI" %}selected{% endif %}>CGEPI</option>
+                <option value="COFIR" {% if processo.Órgãos == "COFIR" %}selected{% endif %}>COFIR</option>
+                <option value="COJUV" {% if processo.Órgãos == "COJUV" %}selected{% endif %}>COJUV</option>
+                <option value="CPVCI" {% if processo.Órgãos == "CPVCI" %}selected{% endif %}>CPVCI</option>
+                <option value="DEFCIVIL" {% if processo.Órgãos == "DEFCIVIL" %}selected{% endif %}>DEFCIVIL</option>
+                <option value="DEFENSORIA" {% if processo.Órgãos == "DEFENSORIA" %}selected{% endif %}>DEFENSORIA</option>
+                <option value="DER" {% if processo.Órgãos == "DER" %}selected{% endif %}>DER</option>
+                <option value="DETRAN" {% if processo.Órgãos == "DETRAN" %}selected{% endif %}>DETRAN</option>
+                <option value="EMATER" {% if processo.Órgãos == "EMATER" %}selected{% endif %}>EMATER</option>
+                <option value="EMATERPROD" {% if processo.Órgãos == "EMATERPROD" %}selected{% endif %}>EMATERPROD</option>
+                <option value="EMGERPI" {% if processo.Órgãos == "EMGERPI" %}selected{% endif %}>EMGERPI</option>
+                <option value="EMGERPI_CEASA" {% if processo.Órgãos == "EMGERPI_CEASA" %}selected{% endif %}>EMGERPI_CEASA</option>
+                <option value="EMGERPI_CIDAPI" {% if processo.Órgãos == "EMGERPI_CIDAPI" %}selected{% endif %}>EMGERPI_CIDAPI</option>
+                <option value="EMGERPI_CODIPI" {% if processo.Órgãos == "EMGERPI_CODIPI" %}selected{% endif %}>EMGERPI_CODIPI</option>
+                <option value="EMGERPI_COHAB" {% if processo.Órgãos == "EMGERPI_COHAB" %}selected{% endif %}>EMGERPI_COHAB</option>
+                <option value="EMGERPI_COMDEPI" {% if processo.Órgãos == "EMGERPI_COMDEPI" %}selected{% endif %}>EMGERPI_COMDEPI</option>
+                <option value="EMGERPI_COMEPI" {% if processo.Órgãos == "EMGERPI_COMEPI" %}selected{% endif %}>EMGERPI_COMEPI</option>
+                <option value="EMGERPI_ETELPI_FUNART" {% if processo.Órgãos == "EMGERPI_ETELPI_FUNART" %}selected{% endif %}>EMGERPI_ETELPI_FUNART</option>
+                <option value="EMGERPI_PIEMTUR" {% if processo.Órgãos == "EMGERPI_PIEMTUR" %}selected{% endif %}>EMGERPI_PIEMTUR</option>
+                <option value="EMGERPI_PRODEPI" {% if processo.Órgãos == "EMGERPI_PRODEPI" %}selected{% endif %}>EMGERPI_PRODEPI</option>
+                <option value="EMGERPI_CORESA" {% if processo.Órgãos == "EMGERPI_CORESA" %}selected{% endif %}>EMGERPI_CORESA</option>
+                <option value="EMGERPI_EMATER" {% if processo.Órgãos == "EMGERPI_EMATER" %}selected{% endif %}>EMGERPI_EMATER</option>
+                <option value="FAPEPI" {% if processo.Órgãos == "FAPEPI" %}selected{% endif %}>FAPEPI</option>
+                <option value="FUESPI" {% if processo.Órgãos == "FUESPI" %}selected{% endif %}>FUESPI</option>
+                <option value="FUNDESPI" {% if processo.Órgãos == "FUNDESPI" %}selected{% endif %}>FUNDESPI</option>
+                <option value="FUPIP" {% if processo.Órgãos == "FUPIP" %}selected{% endif %}>FUPIP</option>
+                <option value="GMG" {% if processo.Órgãos == "GMG" %}selected{% endif %}>GMG</option>
+                <option value="IASPI" {% if processo.Órgãos == "IASPI" %}selected{% endif %}>IASPI</option>
+                <option value="IDEPI" {% if processo.Órgãos == "IDEPI" %}selected{% endif %}>IDEPI</option>
+                <option value="IMEPI" {% if processo.Órgãos == "IMEPI" %}selected{% endif %}>IMEPI</option>
+                <option value="IMEPIPROD" {% if processo.Órgãos == "IMEPIPROD" %}selected{% endif %}>IMEPIPROD</option>
+                <option value="INTERPI" {% if processo.Órgãos == "INTERPI" %}selected{% endif %}>INTERPI</option>
+                <option value="JUCEPI" {% if processo.Órgãos == "JUCEPI" %}selected{% endif %}>JUCEPI</option>
+                <option value="METRO" {% if processo.Órgãos == "METRO" %}selected{% endif %}>METRO</option>
+                <option value="PGEPI" {% if processo.Órgãos == "PGEPI" %}selected{% endif %}>PGEPI</option>
+                <option value="PMPI" {% if processo.Órgãos == "PMPI" %}selected{% endif %}>PMPI</option>
+                <option value="SAF" {% if processo.Órgãos == "SAF" %}selected{% endif %}>SAF</option>
+                <option value="SASC" {% if processo.Órgãos == "SASC" %}selected{% endif %}>SASC</option>
+                <option value="SEADPREVPI" {% if processo.Órgãos == "SEADPREVPI" %}selected{% endif %}>SEADPREVPI</option>
+                <option value="SEAGRO" {% if processo.Órgãos == "SEAGRO" %}selected{% endif %}>SEAGRO</option>
+                <option value="SECID" {% if processo.Órgãos == "SECID" %}selected{% endif %}>SECID</option>
+                <option value="SECULT" {% if processo.Órgãos == "SECULT" %}selected{% endif %}>SECULT</option>
+                <option value="SEDET" {% if processo.Órgãos == "SEDET" %}selected{% endif %}>SEDET</option>
+                <option value="SEDUC" {% if processo.Órgãos == "SEDUC" %}selected{% endif %}>SEDUC</option>
+                <option value="SEDUC_PRONATEC" {% if processo.Órgãos == "SEDUC_PRONATEC" %}selected{% endif %}>SEDUC_PRONATEC</option>
+                <option value="SEFAZPI" {% if processo.Órgãos == "SEFAZPI" %}selected{% endif %}>SEFAZPI</option>
+                <option value="SEGOV" {% if processo.Órgãos == "SEGOV" %}selected{% endif %}>SEGOV</option>
+                <option value="SEID" {% if processo.Órgãos == "SEID" %}selected{% endif %}>SEID</option>
+                <option value="SEINFRA" {% if processo.Órgãos == "SEINFRA" %}selected{% endif %}>SEINFRA</option>
+                <option value="SEJUSPI" {% if processo.Órgãos == "SEJUSPI" %}selected{% endif %}>SEJUSPI</option>
+                <option value="SEMAR" {% if processo.Órgãos == "SEMAR" %}selected{% endif %}>SEMAR</option>
+                <option value="SEMINPER" {% if processo.Órgãos == "SEMINPER" %}selected{% endif %}>SEMINPER</option>
+                <option value="SEPLAN" {% if processo.Órgãos == "SEPLAN" %}selected{% endif %}>SEPLAN</option>
+                <option value="SESAPI" {% if processo.Órgãos == "SESAPI" %}selected{% endif %}>SESAPI</option>
+                <option value="SETRANS" {% if processo.Órgãos == "SETRANS" %}selected{% endif %}>SETRANS</option>
+                <option value="SETUR" {% if processo.Órgãos == "SETUR" %}selected{% endif %}>SETUR</option>
+                <option value="SSPPI" {% if processo.Órgãos == "SSPPI" %}selected{% endif %}>SSPPI</option>
+                <option value="SURPI" {% if processo.Órgãos == "SURPI" %}selected{% endif %}>SURPI</option>
+                <option value="TVANTARES" {% if processo.Órgãos == "TVANTARES" %}selected{% endif %}>TVANTARES</option>
+                <option value="CDTER" {% if processo.Órgãos == "CDTER" %}selected{% endif %}>CDTER</option>
+                <option value="SADA" {% if processo.Órgãos == "SADA" %}selected{% endif %}>SADA</option>
+                <option value="SECESP" {% if processo.Órgãos == "SECESP" %}selected{% endif %}>SECESP</option>
+                <option value="SECMULHERES" {% if processo.Órgãos == "SECMULHERES" %}selected{% endif %}>SECMULHERES</option>
+                <option value="SEDUC_PRECATORIO" {% if processo.Órgãos == "SEDUC_PRECATORIO" %}selected{% endif %}>SEDUC_PRECATORIO</option>
+                <option value="SERES" {% if processo.Órgãos == "SERES" %}selected{% endif %}>SERES</option>
+                <option value="FUNPREV" {% if processo.Órgãos == "FUNPREV" %}selected{% endif %}>FUNPREV</option>
+            </select><br><br>
+        </div>
+
+        <div class="form-group">
+            <label for="tipo" class="bold-label">Selecione o tipo:</label>
+            <input type="text" id="tipo" name="tipo" value="{{ processo.Tipo }}" required><br><br>
+        </div>
+    </div>
+
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="teor" class="bold-label">Descrição do Processo:</label>
+            <input type="text" id="teor" name="teor" value="{{ processo.Teor }}" required><br><br>
+        </div>
+
+        <div class="form-group">
+            <label for="numero_servidor" class="bold-label">Digite a Quantidade de Servidores:</label>
+            <input type="text" id="numero_servidor" name="numero_servidor" value="{{ processo.Número_Servidor }}" pattern="[0-9]*" required><br><br>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="valor" class="bold-label">Implatação:</label>
+            <div style="display: flex; align-items: center;">
+                <input id="valor" name="valor" value="{{ processo.Valor }}" type="text" class="input-moeda" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="diferenca" class="bold-label">Diferença:</label>
+            <div style="display: flex; align-items: center;">
+                <input id="diferenca" name="diferenca" value="{{ processo.Diferença }}" type="text" class="input-moeda" required>
+            </div><br>
+        </div>
+        <div class="form-group">
+            <label for="exclusao" class="bold-label">Exclusão:</label>
+            <div style="display: flex; align-items: center;">
+                <input id="exclusao" name="exclusao" value="{{ processo.Exclusao }}" type="text" class="input-moeda" required>
+            </div><br>
+        </div>
+    </div>
+    <!-- O campo Total (R$) será calculado, mas não aparecerá no formulário -->
+    <!-- Campo oculto para armazenar o total -->
+    <input type="hidden" id="total" name="total" class="input-moeda" >
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="status" class="bold-label">Status do Processo:</label>
+            <select id="status" name="status">
+                <option value="Recebido" {% if processo.status == "Recebido" %}selected{% endif %}>Conferido</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label for="responsavel" class="bold-label">Selecione o responsável:</label>
+            <select id="responsavel" name="responsavel">
+                <option value="">Selecione um responsável</option>
+                <option value="ADRIANA BACELAR CHAVES" {% if processo.Responsável|string and processo.Responsável == "ADRIANA BACELAR CHAVES" %}selected{% endif %}>ADRIANA BACELAR CHAVES</option>
+                <option value="ANTONIO WALBER R. DE SOUSA" {% if processo.Responsável|string and processo.Responsável == "ANTONIO WALBER R. DE SOUSA" %}selected{% endif %}>ANTONIO WALBER R. DE SOUSA</option>
+                <option value="DANIEL DE OLIVEIRA GOMES" {% if processo.Responsável|string and processo.Responsável == "DANIEL DE OLIVEIRA GOMES" %}selected{% endif %}>DANIEL DE OLIVEIRA GOMES</option>
+                <option value="DEIVIDY WALLAS LEAO LOPES" {% if processo.Responsável|string and processo.Responsável == "DEIVIDY WALLAS LEAO LOPES" %}selected{% endif %}>DEIVIDY WALLAS LEAO LOPES</option>
+                <option value="DEUSDEDIT CAMPELO LIMA NETO" {% if processo.Responsável|string and processo.Responsável == "DEUSDEDIT CAMPELO LIMA NETO" %}selected{% endif %}>DEUSDEDIT CAMPELO LIMA NETO</option>
+                <option value="JESSICA LORENA" {% if processo.Responsável|string and processo.Responsável == "JESSICA LORENA" %}selected{% endif %}>JESSICA LORENA</option>
+                <option value="JOSE ARMANDO GOMES" {% if processo.Responsável|string and processo.Responsável == "JOSE ARMANDO GOMES" %}selected{% endif %}>JOSE ARMANDO GOMES</option>
+                <option value="JOSISLEIDE SANTOS CAVALCANTE PAZ LANDIN" {% if processo.Responsável|string and processo.Responsável == "JOSISLEIDE SANTOS CAVALCANTE PAZ LANDIN" %}selected{% endif %}>JOSISLEIDE SANTOS CAVALCANTE PAZ LANDIN</option>
+                <option value="MARCIO DARLENO ROCHA MARQUES" {% if processo.Responsável|string and processo.Responsável == "MARCIO DARLENO ROCHA MARQUES" %}selected{% endif %}>MARCIO DARLENO ROCHA MARQUES</option>
+                <option value="MARIA DO CARMO DE SOUSA BONFIM LEAL" {% if processo.Responsável|string and processo.Responsável == "MARIA DO CARMO DE SOUSA BONFIM LEAL" %}selected{% endif %}>MARIA DO CARMO DE SOUSA BONFIM LEAL</option>
+                <option value="MARA MARLUCE" {% if processo.Responsável|string and processo.Responsável == "MARA MARLUCE" %}selected{% endif %}>MARA MARLUCE</option>
+                <option value="NAIARA SILVA OLIVEIRA" {% if processo.Responsável|string and processo.Responsável == "NAIARA SILVA OLIVEIRA" %}selected{% endif %}>NAIARA SILVA OLIVEIRA</option>
+                <option value="SARAH RESENDE PASSOS TEOTONIO LUZ" {% if processo.Responsável|string and processo.Responsável == "SARAH RESENDE PASSOS TEOTONIO LUZ" %}selected{% endif %}>SARAH RESENDE PASSOS TEOTONIO LUZ</option>
+                <option value="TATILLA HELLEN QUARESMA DE ARAUJO" {% if processo.Responsável|string and processo.Responsável == "TATILLA HELLEN QUARESMA DE ARAUJO" %}selected{% endif %}>TATILLA HELLEN QUARESMA DE ARAUJO</option>
+                <option value="WASHINGTON ELIAS C. MENDES" {% if processo.Responsável|string and processo.Responsável == "WASHINGTON ELIAS C. MENDES" %}selected{% endif %}>WASHINGTON ELIAS C. MENDES</option>
+            </select>
+        </div>
+    </div><br><br>
+
+    <button type="submit" class="button-salvar">Salvar</button>
+</form>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('add-more').addEventListener('click', function() {
+            var container = document.getElementById('tipo-container');
+            // Contar quantos dropdowns já existem
+            var existingDropdowns = container.querySelectorAll('.tipo-dropdown').length + 1; // +1 includes the initial dropdown
+            if (existingDropdowns < 6) { // Limit to 5 dropdowns
+                var newDropdown = document.createElement('div');
+                newDropdown.classList.add('dropdown-section');
+                newDropdown.innerHTML = `
+            <select name="tipo[]" class="tipo-dropdown">
+                <!-- Adicionar novamente todas as opções de tipo aqui -->
+            </select>
+        `;
+        container.appendChild(newDropdown);
+            } else {
+                alert('Máximo de 5 tipos permitidos.');
+            }
+        });
+    });
+document.querySelectorAll('.input-moeda').forEach(input => {
+input.addEventListener('input', formatarMoeda);
+});
+
+function formatarMoeda(event) {
+    let valor = event.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+    valor = (valor / 100).toFixed(2) + ''; // Divide por 100 e formata com duas casas decimais
+    valor = valor.replace('.', ','); // Troca ponto por vírgula
+   event.target.value = valor; // Atualiza o campo com o valor formatado
+}
+document.addEventListener('DOMContentLoaded', function() {
+    var messagesContainer = document.getElementById('flash-messages');
+    var messages = messagesContainer.querySelectorAll('div');
+    messages.forEach(function(msg) {
+        alert(msg.textContent); // Exibe cada mensagem em um pop-up
+    });
+});
+</script>
+
+{% endblock %}

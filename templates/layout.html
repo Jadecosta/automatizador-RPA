@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPA</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar">
+        <img id="image-navbar" src="../static/menu.png" alt="Ilustração de login">
+        <a href="/controle_processo" class="navbar-title">
+           <p id="titulo">DIRETORIA DE FOLHA DE PAGAMENTO</p> 
+        </a>
+        <div class="navbar-menu">
+            {% if 'permissao' in session %}
+                {% if session['permissao'] == 'administrador' %}
+                    <a href="/operacionalizacao"><i class='bx bx-laptop icon'></i> <span>Operacionalização</span></a>
+                    <a href="/calculadora"><i class='bx bxs-calculator'></i> <span>Calculadora</span></a>
+                    <a href="/indenizacao"><i class='bx bx-money' ></i></i> <span>Indenização</span></a>
+                    <a href="/comparativo_folha"><i class='bx bx-git-compare'></i> <span>Selects</span></a>
+                    <a href="/historico"><i class='bx bx-history icon'></i> <span>Histórico</span></a>
+                    <a href="/controle_processo"><i class='bx bx-cog'></i> <span>Controle de Processos</span></a>
+                    <a href="/alterar_senha"><i class='bx bxs-lock-alt'></i> <span>Alterar Senha</span></a>
+                {% elif session['permissao'] == 'indenizacao' %}
+                    <a href="/calculadora"><i class='bx bxs-calculator'></i> <span>Calculadora</span></a>
+                    <a href="/indenizacao"><i class='bx bx-money' ></i></i> <span>Indenização</span></a>
+                    <a href="/controle_processo"><i class='bx bx-cog'></i> <span>Controle de Processos</span></a>
+                {% elif session['permissao'] == 'digitacao' %}
+                    <a href="/operacionalizacao"><i class='bx bx-laptop icon'></i> <span>Operacionalização</span></a>
+                    <a href="/controle_processo"><i class='bx bx-cog'></i> <span>Controle de Processos</span></a>
+                {% elif session['permissao'] == 'basico' %}
+                    <a href="/controle_processo"><i class='bx bx-cog'></i> <span>Controle de Processos</span></a>
+                {% endif %}
+            {% endif %}
+            
+            <!-- Botão de Logout -->
+            {% if 'usuario_id' in session %}
+            <div class="logout-container">
+                <form id="logout-form" action="{{ url_for('logout') }}" method="POST">
+                    <button type="submit" class="logout-btn">
+                        <i class='bx bx-log-out'></i> Sair
+                    </button>
+                </form>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Bloco onde outras páginas serão carregadas -->
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>

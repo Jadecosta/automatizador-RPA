@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+{% block content %}
+<body>
+    
+    <h1 id="h1_visualizar">Visualizar Controle Processo</h1>
+
+
+    <!-- Filtro por Responsável, Processo e Mês -->
+    <form id="inicio_processo-form" method="GET" action="">
+        <div class="form-row">
+            <div class="form-group">
+                <div class="form-group">
+                    <label for="processo" class="bold-label">Processo:</label>
+                    <input type="text" id="processo" name="processo" placeholder="Digite o número do processo">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="periodo_mes" class="bold-label">Mês:</label>
+                <select id="periodo_mes" name="periodo_mes">
+                    <option value="">Selecione um mês</option>
+                    <option value="Jan">Janeiro</option>
+                    <option value="Fev">Fevereiro</option>
+                    <option value="Mar">Março</option>
+                    <option value="Abr">Abril</option>
+                    <option value="Mai">Maio</option>
+                    <option value="Jun">Junho</option>
+                    <option value="Jul">Julho</option>
+                    <option value="Ago">Agosto</option>
+                    <option value="Set">Setembro</option>
+                    <option value="Out">Outubro</option>
+                    <option value="Nov">Novembro</option>
+                    <option value="Dez">Dezembro</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="periodo_ano" class="bold-label">Ano:</label>
+                <select id="periodo_ano" name="periodo_ano">
+                    <option value="">Selecione o ano</option>
+                    <option value="2025">2025</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button id="btn-filtro" type="submit">Filtrar</button>
+            </div>
+            <div class="form-group">
+                <button type="button" id="download_processo" onclick="window.location.href='/download_processo'">Download</button>
+            </div>
+            
+        </div>
+
+    </form>
+    <!-- Tabela de Controle de Processos -->
+    <table id="processo-table">
+        <thead>
+            <tr>
+                <th>Período</th>
+                <th>Processo</th>
+                <th>Órgão</th>
+                <th>Tipo de processo</th>
+                <th>Descrição do processo</th>
+                <th>Quantidade de Servidor</th>
+                <th>Implantação</th>
+                <th>Diferença</th>
+                <th>Exclusão</th>
+                <th>Impacto(R$)</th>
+                <th>Data Conferido</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for controle in controles %}
+                <tr>
+                    <td>{{ controle.periodo }}</td>
+                    <td>{{ controle.numero_processo }}</td>
+                    <td>{{ controle.orgaos }}</td>
+                    <td>{{ controle.tipos }}</td>
+                    <td>{{ controle.teor }}</td>
+                    <td>{{ controle.numero_servidor }}</td>
+                    <td>{{ controle.valor }}</td>
+                    <td>{{ controle.diferenca }}</td>
+                    <td>{{ controle.exclusao }}</td>
+                    <td>{{ controle.total|default('', true) }}</td>
+                    <td>{{ controle.data_recebido if controle.data_recebido else '' }}</td>
+                    <td>
+                        <button onclick="editarProcesso('{{ controle.numero_processo }}')">Editar</button>
+                    </td>
+
+                </tr>
+            {% endfor %}
+        </tbody>
+        {% if mensagem %}
+            <p style="color: red; text-align:center; margin-top: 40px;font-weight: bold;">{{ mensagem }}</p>
+        {% endif %}
+        
+    </table><br><br>
+    <a href="/controle_processo" class="back-button">
+        <i class='bx bxs-left-arrow-circle'></i>
+        <div style="font-size: 0.9rem;">Voltar</div>
+    </a>
+</body>
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+{% endblock %}

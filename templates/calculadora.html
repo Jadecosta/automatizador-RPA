@@ -1,0 +1,197 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+<form id="operationalization-form">
+    <h1 id="h1-calculadora">Cálculos de Indenizações Trabalhistas</h1><br><br>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="base_calc" class="bold-label">Nome:</label></br>
+            <input type="text" id="nome_calc" placeholder="Digite o Nome" >
+        </div>
+        <div class="form-group">
+            <label for="base_calc" class="bold-label">Matricula:</label></br>
+            <input type="text" id="matricula_calc" placeholder="Digite a matrícula" >
+        </div>
+        <div class="form-group">
+            <label for="base_calc" class="bold-label">CPF:</label></br>
+            <input type="text" id="cpf_calc" placeholder="Digite o CPF" >
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="orgaos" class="bold-label">Selecione o órgão:</label></br>
+            <select id="orgaos_calc" name="orgaos">
+                <option value="">Selecione um órgão</option>
+                <option value="ADAPI">ADAPI</option>
+                <option value="ADH">ADH</option>
+                <option value="AGESPISA">AGESPISA</option>
+                <option value="AGRESP">AGRESP</option>
+                <option value="ATIPI">ATIPI</option>
+                <option value="BEP">BEP</option>
+                <option value="CBMPI">CBMPI</option>
+                <option value="CCOM">CCOM</option>
+                <option value="CENDROGAS">CENDROGAS</option>
+                <option value="CEPM">CEPM</option>
+                <option value="CGEPI">CGEPI</option>
+                <option value="COFIR">COFIR</option>
+                <option value="COJUV">COJUV</option>
+                <option value="CPVCI">CPVCI</option>
+                <option value="DEFCIVIL">DEFCIVIL</option>
+                <option value="DEFENSORIA">DEFENSORIA</option>
+                <option value="DER">DER</option>
+                <option value="DETRAN">DETRAN</option>
+                <option value="EMATER">EMATER</option>
+                <option value="EMATERPROD">EMATERPROD</option>
+                <option value="EMGERPI">EMGERPI</option>
+                <option value="EMGERPI_CEASA">EMGERPI_CEASA</option>
+                <option value="EMGERPI_CIDAPI">EMGERPI_CIDAPI</option>
+                <option value="EMGERPI_CODIPI">EMGERPI_CODIPI</option>
+                <option value="EMGERPI_COHAB">EMGERPI_COHAB</option>
+                <option value="EMGERPI_COMDEPI">EMGERPI_COMDEPI</option>
+                <option value="EMGERPI_COMEPI">EMGERPI_COMEPI</option>
+                <option value="EMGERPI_ETELPI_FUNART">EMGERPI_ETELPI_FUNART</option>
+                <option value="EMGERPI_PIEMTUR">EMGERPI_PIEMTUR</option>
+                <option value="EMGERPI_PRODEPI">EMGERPI_PRODEPI</option>
+                <option value="FAPEPI">FAPEPI</option>
+                <option value="FUESPI">FUESPI</option>
+                <option value="FUNDESPI">FUNDESPI</option>
+                <option value="FUPIP">FUPIP</option>
+                <option value="GMG">GMG</option>
+                <option value="IASPI">IASPI</option>
+                <option value="IDEPI">IDEPI</option>
+                <option value="IMEPI">IMEPI</option>
+                <option value="IMEPIPROD">IMEPIPROD</option>
+                <option value="INTERPI">INTERPI</option>
+                <option value="JUCEPI">JUCEPI</option>
+                <option value="METRO">METRO</option>
+                <option value="PGEPI">PGEPI</option>
+                <option value="PMPI">PMPI</option>
+                <option value="SAF">SAF</option>
+                <option value="SASC">SASC</option>
+                <option value="SEADPREVPI">SEADPREVPI</option>
+                <option value="SEAGRO">SEAGRO</option>
+                <option value="SECID">SECID</option>
+                <option value="SECULT">SECULT</option>
+                <option value="SEDET">SEDET</option>
+                <option value="SEDUC">SEDUC</option>
+                <option value="SEDUC_PRONATEC">SEDUC_PRONATEC</option>
+                <option value="SEFAZPI">SEFAZPI</option>
+                <option value="SEGOV">SEGOV</option>
+                <option value="SEID">SEID</option>
+                <option value="SEINFRA">SEINFRA</option>
+                <option value="SEJUSPI">SEJUSPI</option>
+                <option value="SEMAR">SEMAR</option>
+                <option value="SEMINPER">SEMINPER</option>
+                <option value="SEPLAN">SEPLAN</option>
+                <option value="SESAPI">SESAPI</option>
+                <option value="SETRANS">SETRANS</option>
+                <option value="SETUR">SETUR</option>
+                <option value="SSPPI">SSPPI</option>
+                <option value="SURPI">SURPI</option>
+                <option value="TVANTARES">TVANTARES</option>
+                <option value="VICEGOV">VICEGOV</option>
+                <option value="CDTER">CDTER</option>
+                <option value="EMGERPI_CORESA">EMGERPI_CORESA</option>
+                <option value="EMGERPI_EMATER">EMGERPI_EMATER</option>
+                <option value="SADA">SADA</option>
+                <option value="SECESP">SECESP</option>
+                <option value="SECMULHERES">SECMULHERES</option>
+                <option value="SEDUC_PRECATORIO">SEDUC_PRECATORIO</option>
+                <option value="SERES">SERES</option>
+                <option value="FUNPREV">FUNPREV</option>
+            </select><br>
+        </div>
+        <div class="form-group">
+            <label for="tipo" class="bold-label">Tipo de Servidor:</label></br>
+            <select id="tipo" onchange="alterarCampoFerias()">
+                <option value="">Selecione o Tipo de Servidor</option>
+                <option value="Comissionado Exclusivo">Comissionado Exclusivo</option>
+                <option value="Prestador de Serviço/Temporario">Prestador de Serviço/Temporário</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="base_calc" class="bold-label">Base de Cálculo s/ CET:</label>
+            <input type="text" id="base_calc" placeholder="R$" class="input-moeda" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="cet_calc" class="bold-label">CET:</label></br>
+            <input type="text" id="cet_calc" placeholder="R$" class="input-moeda" step="0.01" required>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="admissao" class="bold-label">Data de Admissão (Dia/Mês/Ano):</label></br>
+            <input type="text" id="admissao" placeholder="DD/MM/AAAA" maxlength="10" oninput="formatDate(this)">
+        </div>
+        <div class="form-group">
+            <label for="termino" class="bold-label">Data de Término (Dia/Mês/Ano):</label><br>
+            <input type="text" id="termino" placeholder="DD/MM/AAAA" maxlength="10" oninput="formatDate(this)">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label class="checkbox-container">
+            Dias a restituir?
+            <input type="checkbox" id="dias_restituir_checkbox" onchange="toggleRestituicaoCampos()">
+            <span class="checkmark"></span>
+          </label>
+          
+    </div>
+
+    <div id="restituicao_campos" style="display: none;">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="liquido_calc" class="bold-label">Valor Líquido:</label><br>
+                <input type="text" id="liquido_calc" placeholder="R$" class="input-moeda">
+            </div>
+            <div class="form-group">
+                <label for="dias_restituir" class="bold-label">Dias Trabalhados:</label><br>
+                <input type="number" id="dias_restituir" placeholder="Digite os dias">
+            </div>
+        </div>
+    </div>
+
+    <div id="ferias-container" style="display: none;">
+        <label for="feriasGozadas" class="bold-label">Dias de Férias Não Gozadas:</label><br>
+        <input type="number" id="feriasGozadas" placeholder="Digite os dias" min="0" max="30" oninput="limitFerias(this)">
+    </div><br><br>
+
+    <button type="button" class="button-calculo" onclick="calculos()">Calcular!</button><br>
+</form>
+
+<div id="results_calculos"></div>
+
+<script>   
+document.querySelectorAll('.input-moeda').forEach(input => {
+    input.addEventListener('input', formatarMoeda);
+    });
+    
+    function formatarMoeda(event) {
+        let valor = event.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+        valor = (valor / 100).toFixed(2) + ''; // Divide por 100 e formata com duas casas decimais
+        valor = valor.replace('.', ','); // Troca ponto por vírgula
+        event.target.value = valor; // Atualiza o campo com o valor formatado
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        var messagesContainer = document.getElementById('flash-messages');
+        var messages = messagesContainer.querySelectorAll('div');
+        messages.forEach(function(msg) {
+            alert(msg.textContent); // Exibe cada mensagem em um pop-up
+        });
+    });
+    function toggleRestituicaoCampos() {
+    const checkbox = document.getElementById('dias_restituir_checkbox');  // ID corrigido
+    const campos = document.getElementById('restituicao_campos');
+    campos.style.display = checkbox.checked ? 'block' : 'none';
+}
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+<h1 id="h1_calculo">Indenizações Trabalhistas</h1> <br><br>
+
+<style>
+input[type="checkbox"] {
+        transform: scale(0.4);
+    }
+</style>
+
+
+<table id="processo-table">
+    <thead>
+        <tr>
+            <th>Pago</th>
+            <th>Matricula</th>
+            <th>Data de Admissão</th>
+            <th>Data de Desligamento</th>
+            <th>Dias Trabalhados</th>
+            <th>13° Proporcional</th>
+            <th>1/3 Férias</th>
+            <th>Último ano</th>
+            <th>Penúltimo ano</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in dados %}
+        <tr>
+            <td><input type="checkbox" id="checkbox" name="pago-{{ row['Matricula'] }}" {% if row['Pago'] == 'sim' %}checked{% endif %}></td>
+            <td>{{ row['Matricula'] if row['Matricula'] == row['Matricula'] else '' }}</td>
+            <td>{{ row['Data_Admissão'] if row['Data_Admissão'] == row['Data_Admissão'] else '' }}</td>
+            <td>{{ row['Data_Desligamento'] if row['Data_Desligamento'] == row['Data_Desligamento'] else '' }}</td>
+            <td>{{ row['Dias_Trabalhados'] if row['Dias_Trabalhados'] == row['Dias_Trabalhados'] else '' }}</td>
+            <td>{{ row['13°_Proporcional'] if row['13°_Proporcional'] == row['13°_Proporcional'] else '' }}</td>
+            <td>{{ row['Terço_Férias'] if row['Terço_Férias'] == row['Terço_Férias'] else '' }}</td>
+            <td>{{ row['Último_mês'] if row['Último_mês'] == row['Último_mês'] else '' }}</td>
+            <td>{{ row['Penúltimo_mês'] if row['Penúltimo_mês'] == row['Penúltimo_mês'] else '' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  
+</table>
+<button id="btn-salvar-ind" type="submit">Salvar</button>
+<script>
+    document.getElementById('btn-salvar-ind').addEventListener('click', function() {
+        const rows = document.querySelectorAll('table#processo-table tr');
+        let data = [];
+        rows.forEach((row, index) => {
+            if (index > 0) {  // Ignora o cabeçalho da tabela
+                const matricula = row.cells[1].textContent;
+                const pago = row.cells[0].querySelector('input[type="checkbox"]').checked ? 'sim' : '';
+                data.push({matricula: matricula, pago: pago});
+            }
+        });
+    
+        fetch('/salvar-pagos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(response => response.json())
+          .then(data => {
+              alert('Dados salvos com sucesso!');
+          })
+          .catch(error => console.error('Erro ao salvar:', error));
+    });
+    </script>
+{% endblock %}

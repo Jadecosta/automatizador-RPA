@@ -1,0 +1,340 @@
+{% extends "layout.html" %}
+{% block content %}
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+<style>
+    .fa-plus-circle {
+        cursor: pointer;
+        font-size: 18px;
+        color: #00408d;
+        margin-left: 750px;
+    }
+    .tipo-dropdown {
+        width: 100%;
+        max-width: 450px;
+        height: 43px;
+        font-size: 16px;
+        border: 1px solid #00408d;
+        border-radius: 8px;
+        background-color: #fff;
+        color: #333;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding-right: 40px;
+}
+
+.dropdown-section {
+    margin-top: 10px;
+    padding-top: 10px;
+    margin-right: 10px;
+}
+
+.dropdown-section label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+    
+</style>
+
+<div id="flash-messages" style="display:none;">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+            <div data-category="{{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endwith %}
+</div>
+<form id="processo-form" method="POST" action="/salvar_controle_processo">
+    <h1 id="h1_cadastroProcesso">Cadastrar Processos</h1><br>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="periodo" class="bold-label">Selecione o período:</label>
+            <select id="periodo" name="periodo">
+                <option value="">Selecione um mês</option>
+                <option value="Jan/2025">Jan/2025</option>
+                <option value="Fev/2025">Fev/2025</option>
+                <option value="Mar/2025">Mar/2025</option>
+                <option value="Abr/2025">Abr/2025</option>
+                <option value="Mai/2025">Mai/2025</option>
+                <option value="Jun/2025">Jun/2025</option>
+                <option value="Jul/2025">Jul/2025</option>
+                <option value="Ago/2025">Ago/2025</option>
+                <option value="Set/2025">Set/2025</option>
+                <option value="Out/2025">Out/2025</option>
+                <option value="Nov/2025">Nov/2025</option>
+                <option value="Dez/2025">Dez/2025</option>
+            </select><br><br>
+        </div>
+
+        <div class="form-group">
+            <label for="numero_processo" class="bold-label">Digite o número do processo:</label>
+            <input type="text" id="numero_processo" name="numero_processo" placeholder="Número do processo" required><br><br>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <label for="orgaos" class="bold-label">Selecione o órgão:</label>
+            <select id="orgaos-dropdown" name="orgaos">
+                <option value="">Selecione um órgão</option>
+                <option value="ADAPI">ADAPI</option>
+                <option value="ADH">ADH</option>
+                <option value="AGESPISA">AGESPISA</option>
+                <option value="AGRESP">AGRESP</option>
+                <option value="ATIPI">ATIPI</option>
+                <option value="BEP">BEP</option>
+                <option value="CBMPI">CBMPI</option>
+                <option value="CCOM">CCOM</option>
+                <option value="CENDROGAS">CENDROGAS</option>
+                <option value="CEPM">CEPM</option>
+                <option value="CGEPI">CGEPI</option>
+                <option value="COFIR">COFIR</option>
+                <option value="COJUV">COJUV</option>
+                <option value="CPVCI">CPVCI</option>
+                <option value="DEFCIVIL">DEFCIVIL</option>
+                <option value="DEFENSORIA">DEFENSORIA</option>
+                <option value="DER">DER</option>
+                <option value="DETRAN">DETRAN</option>
+                <option value="EMATER">EMATER</option>
+                <option value="EMATERPROD">EMATERPROD</option>
+                <option value="EMGERPI">EMGERPI</option>
+                <option value="EMGERPI_CEASA">EMGERPI_CEASA</option>
+                <option value="EMGERPI_CIDAPI">EMGERPI_CIDAPI</option>
+                <option value="EMGERPI_CODIPI">EMGERPI_CODIPI</option>
+                <option value="EMGERPI_COHAB">EMGERPI_COHAB</option>
+                <option value="EMGERPI_COMDEPI">EMGERPI_COMDEPI</option>
+                <option value="EMGERPI_COMEPI">EMGERPI_COMEPI</option>
+                <option value="EMGERPI_ETELPI_FUNART">EMGERPI_ETELPI_FUNART</option>
+                <option value="EMGERPI_PIEMTUR">EMGERPI_PIEMTUR</option>
+                <option value="EMGERPI_PRODEPI">EMGERPI_PRODEPI</option>
+                <option value="FAPEPI">FAPEPI</option>
+                <option value="FUESPI">FUESPI</option>
+                <option value="FUNDESPI">FUNDESPI</option>
+                <option value="FUPIP">FUPIP</option>
+                <option value="GMG">GMG</option>
+                <option value="IASPI">IASPI</option>
+                <option value="IDEPI">IDEPI</option>
+                <option value="IMEPI">IMEPI</option>
+                <option value="IMEPIPROD">IMEPIPROD</option>
+                <option value="INTERPI">INTERPI</option>
+                <option value="JUCEPI">JUCEPI</option>
+                <option value="METRO">METRO</option>
+                <option value="PGEPI">PGEPI</option>
+                <option value="PMPI">PMPI</option>
+                <option value="SAF">SAF</option>
+                <option value="SASC">SASC</option>
+                <option value="SEADPREVPI">SEADPREVPI</option>
+                <option value="SEAGRO">SEAGRO</option>
+                <option value="SECID">SECID</option>
+                <option value="SECULT">SECULT</option>
+                <option value="SEDET">SEDET</option>
+                <option value="SEDUC">SEDUC</option>
+                <option value="SEDUC_PRONATEC">SEDUC_PRONATEC</option>
+                <option value="SEFAZPI">SEFAZPI</option>
+                <option value="SEGOV">SEGOV</option>
+                <option value="SEID">SEID</option>
+                <option value="SEINFRA">SEINFRA</option>
+                <option value="SEJUSPI">SEJUSPI</option>
+                <option value="SEMAR">SEMAR</option>
+                <option value="SEMINPER">SEMINPER</option>
+                <option value="SEPLAN">SEPLAN</option>
+                <option value="SESAPI">SESAPI</option>
+                <option value="SETRANS">SETRANS</option>
+                <option value="SETUR">SETUR</option>
+                <option value="SSPPI">SSPPI</option>
+                <option value="SURPI">SURPI</option>
+                <option value="TVANTARES">TVANTARES</option>
+                <option value="VICEGOV">VICEGOV</option>
+                <option value="CDTER">CDTER</option>
+                <option value="EMGERPI_CORESA">EMGERPI_CORESA</option>
+                <option value="EMGERPI_EMATER">EMGERPI_EMATER</option>
+                <option value="SADA">SADA</option>
+                <option value="SECESP">SECESP</option>
+                <option value="SECMULHERES">SECMULHERES</option>
+                <option value="SEDUC_PRECATORIO">SEDUC_PRECATORIO</option>
+                <option value="SERES">SERES</option>
+                <option value="FUNPREV">FUNPREV</option>
+            </select><br><br>
+        </div>
+        
+        <div class="form-group">
+            <label for="tipo" class="bold-label">Selecione o tipo:</label>
+            <select id="tipo" name="tipo[]" class="tipo-dropdown">
+                <option value="">Selecione um tipo</option>
+                <option value="Inclusão">Inclusão</option>
+                <option value="Exclusão">Exclusão</option>
+                <option value="Adicional de Acumulação">Adicional de Acumulação</option>
+                <option value="Liberação de acesso">Liberação de acesso</option>
+                <option value="Ajuda de Custo">Ajuda de Custo</option>
+                <option value="Aposentadoria">Aposentadoria </option>
+                <option value="Cessão">Cessão</option>
+                <option value="Contratação">Contratação</option>
+                <option value="Decisão judicial">Decisão judicial </option>
+                <option value="Desligamento">Desligamento</option>
+                <option value="Devolução de Faltas">Devolução de Faltas</option>
+                <option value="Fundef">Fundef </option>
+                <option value="Gratificação de Ensino e Instrução">Gratificação de Ensino e Instrução</option>
+                <option value="Gratificação de Formação Geral Básica">Gratificação de Formação Geral Básica</option>
+                <option value="Gratificação Encargo de Curso ou Concurso">Gratificação Encargo de Curso ou Concurso</option>
+                <option value="Indenização por Sessão">Indenização por Sessão </option>
+                <option value="Indenização Trabalhista">Indenização Trabalhista </option>
+                <option value="Ingresso">Ingresso</option>
+                <option value="Jeton">Jeton</option>
+                <option value="Nomeação">Nomeação</option>
+                <option value="Pecúnia Inativo">Pecúnia Inativo</option>
+                <option value="Pensão alimento">Pensão alimento</option>
+                <option value="Piso enfermagem">Piso enfermagem</option>
+                <option value="Promoção">Promoção</option>
+                <option value="Progressão">Progressão</option>
+                <option value="Enquadramento">Enquadramento</option>
+                <option value="Restituição Abono Permanência">Restituição Abono Permanência</option>
+            </select><br><br>
+        </div>
+    </div>
+    <div class="form-row">
+        <i id="add-more" class="fas fa-plus-circle"></i>
+    </div>
+
+    <!-- Container onde os novos dropdowns serão adicionados -->
+    <div id="tipo-container" class="form-row" ></div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="teor" class="bold-label">Descrição do Processo:</label>
+            <input type="text" id="teor" name="teor" placeholder="Descrição" required><br><br>
+        </div>
+
+        <div class="form-group">
+            <label for="numero_servidor" class="bold-label">Digite a Quantidade de Servidores:</label>
+            <input type="text" id="numero_servidor" name="numero_servidor" placeholder="Quantidade de Servidores" pattern="[0-9]*" required><br><br>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <label for="valor" class="bold-label">Implatação:</label>
+            <div style="display: flex; align-items: center;">
+                <input id="valor" name="valor" placeholder="R$" type="text" step="0.01" class="input-moeda" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="diferenca" class="bold-label">Diferença:</label>
+            <div style="display: flex; align-items: center;">
+                <input id="diferenca" name="diferenca" placeholder="R$" type="text" class="input-moeda" step="0.01" required>
+            </div><br>
+        </div>
+        <div class="form-group">
+            <label for="exclusao" class="bold-label">Exclusão:</label>
+            <div style="display: flex; align-items: center;">
+                <input id="exclusao" name="exclusao" placeholder="R$" type="text"  class="input-moeda" step="0.01" required>
+            </div><br>
+        </div>
+    </div>
+    <!-- O campo Total (R$) será calculado, mas não aparecerá no formulário -->
+    <!-- Campo oculto para armazenar o total -->
+    <input type="hidden" id="total" name="total" step="0.01"class="input-moeda" >
+    
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="status" class="bold-label">Status do Processo:</label>
+            <select id="status" name="status">
+                <option value="">Selecione o status</option>
+                <option value="Recebido">Conferido</option>
+
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label for="responsavel" class="bold-label">Selecione o responsável:</label>
+            <select id="responsavel" name="responsavel">
+                <option value="">Selecione um responsável</option>
+                <option value="ADRIANA BACELAR CHAVES">ADRIANA BACELAR CHAVES</option>
+                <option value="ANTONIO WALBER R. DE SOUSA">ANTONIO WALBER R. DE SOUSA</option>
+                <option value="DANIEL DE OLIVEIRA GOMES">DANIEL DE OLIVEIRA GOMES</option>
+                <option value="DEIVIDY WALLAS LEAO LOPES">DEIVIDY WALLAS LEAO LOPES</option>
+                <option value="DEUSDEDIT CAMPELO LIMA NETO">DEUSDEDIT CAMPELO LIMA NETO</option>
+                <option value="JESSICA LORENA">JESSICA LORENA</option>
+                <option value="JOSE ARMANDO GOMES">JOSE ARMANDO GOMES</option>
+                <option value="JOSISLEIDE SANTOS CAVALCANTE PAZ LANDIN">JOSISLEIDE SANTOS CAVALCANTE PAZ LANDIN</option>
+                <option value="MARCIO DARLENO ROCHA MARQUES">MARCIO DARLENO ROCHA MARQUES</option>
+                <option value="MARIA DO CARMO DE SOUSA BONFIM LEAL">MARIA DO CARMO DE SOUSA BONFIM LEAL</option>
+                <option value="MARA MARLUCE">MARA MARLUCE</option>
+                <option value="NAIARA SILVA OLIVEIRA">NAIARA SILVA OLIVEIRA</option>
+                <option value="SARAH RESENDE PASSOS TEOTONIO LUZ">SARAH RESENDE PASSOS TEOTONIO LUZ</option>
+                <option value="TATILLA HELLEN QUARESMA DE ARAUJO">TATILLA HELLEN QUARESMA DE ARAUJO</option>
+                <option value="WASHINGTON ELIAS C. MENDES">WASHINGTON ELIAS C. MENDES</option>
+            </select>
+        </div>
+    </div><br><br>
+
+        <button type="submit" class="button-salvar">Salvar</button>
+</form>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('add-more').addEventListener('click', function() {
+            var container = document.getElementById('tipo-container');
+            // Contar quantos dropdowns já existem
+            var existingDropdowns = container.querySelectorAll('.tipo-dropdown').length + 1; // +1 includes the initial dropdown
+            if (existingDropdowns < 6) { // Limit to 5 dropdowns
+                var newDropdown = document.createElement('div');
+                newDropdown.classList.add('dropdown-section');
+                newDropdown.innerHTML = `
+            <select name="tipo[]" class="tipo-dropdown">
+                <option value="">Selecionar tipo</option>
+                <option value="Inclusão">Inclusão</option>
+                <option value="Exclusão">Exclusão</option>
+                <option value="Adicional de Acumulação">Adicional de Acumulação</option>
+                <option value="Liberação de acesso">Liberação de acesso</option>
+                <option value="Ajuda de Custo">Ajuda de Custo</option>
+                <option value="Aposentadoria">Aposentadoria</option>
+                <option value="Cessão">Cessão</option>
+                <option value="Contratação">Contratação</option>
+                <option value="Decisão judicial">Decisão judicial</option>
+                <option value="Desligamento">Desligamento</option>
+                <option value="Devolução de Faltas">Devolução de Faltas</option>
+                <option value="Fundef">Fundef</option>
+                <option value="Gratificação de Ensino e Instrução">Gratificação de Ensino e Instrução</option>
+                <option value="Gratificação de Formação Geral Básica">Gratificação de Formação Geral Básica</option>
+                <option value="Gratificação Encargo de Curso ou Concurso">Gratificação Encargo de Curso ou Concurso</option>
+                <option value="Indenização por Sessão">Indenização por Sessão</option>
+                <option value="Indenização Trabalhista">Indenização Trabalhista</option>
+                <option value="Ingresso">Ingresso</option>
+                <option value="Jeton">Jeton</option>
+                <option value="Nomeação">Nomeação</option>
+                <option value="Pecúnia Inativo">Pecúnia Inativo</option>
+                <option value="Pensão alimento">Pensão alimento</option>
+                <option value="Piso enfermagem">Piso enfermagem</option>
+                <option value="Promoção">Promoção</option>
+                <option value="Progressão">Progressão</option>
+                <option value="Enquadramento">Enquadramento</option>
+                <option value="Restituição Abono Permanência">Restituição Abono Permanência</option>
+            </select>
+        `;
+        container.appendChild(newDropdown);
+            } else {
+                alert('Máximo de 5 tipos permitidos.');
+            }
+        });
+    });
+document.querySelectorAll('.input-moeda').forEach(input => {
+input.addEventListener('input', formatarMoeda);
+});
+
+function formatarMoeda(event) {
+    let valor = event.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+    valor = (valor / 100).toFixed(2) + ''; // Divide por 100 e formata com duas casas decimais
+    valor = valor.replace('.', ','); // Troca ponto por vírgula
+    event.target.value = valor; // Atualiza o campo com o valor formatado
+}
+document.addEventListener('DOMContentLoaded', function() {
+    var messagesContainer = document.getElementById('flash-messages');
+    var messages = messagesContainer.querySelectorAll('div');
+    messages.forEach(function(msg) {
+        alert(msg.textContent); // Exibe cada mensagem em um pop-up
+    });
+});
+</script>
+    
+    
+
+{% endblock %}

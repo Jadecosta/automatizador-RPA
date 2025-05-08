@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<body>
+    <h1>Processos do Responsável: </h1>
+    <h2>{{ responsavel }}</h2>
+
+    {% if controles %}
+    <button type="button" id="download_processo" style="margin-top: 20px;" onclick="downloadExcel('{{ responsavel }}')">Download</button>
+
+    <form id="responsavel_processo-form" method="GET" action="">
+        <input type="hidden" name="responsavel" value="{{ responsavel }}">
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="processo" class="bold-label">Processo:</label>
+                <input type="text" id="processo" name="processo" placeholder="Digite o número do processo" value="{{ processo or '' }}">
+            </div>
+    
+ 
+            <div class="form-group">
+                <button id="btn-filtro-responsavel" type="submit">Filtrar</button>
+            </div>
+        </div>
+    </form>
+        <table id="processo-table">
+            <thead>
+                <tr>
+                    <th>Período</th>
+                    <th>Processo</th>
+                    <th>Órgão</th>
+                    <th>Tipo de Processo</th>
+                    <th>Descrição do Processo</th>
+                    <th>Quantidade</th>
+                    <th>Implantação</th>
+                    <th>Diferença</th>
+                    <th>Exclusão</th>
+                    <th>Impacto(R$)</th>>
+                    <th>Data Conferido</th>
+                    <th>Ações</th> <!-- Nova coluna para ações -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for controle in controles %}
+                <tr id="processo-{{ controle.Número_Processo }}">
+                    <td>{{ controle.Período }}</td>
+                    <td>{{ controle.Número_Processo }}</td>
+                    <td>{{ controle.Órgãos }}</td>
+                    <td>{{ controle.Tipo }}</td>
+                    <td>{{ controle.Teor }}</td>
+                    <td>{{ controle.Número_Servidor }}</td>
+                    <td>{{ controle.Valor }}</td>
+                    <td>{{ controle.Diferença }}</td>
+                    <td>{{ controle.Exclusao }}</td>
+                    <td>{{ controle.Total }}</td>
+                    <td>{{ controle.Data_recebido if controle.Data_recebido else '' }}</td>
+                    <td>
+                        <button id="btn-editar" onclick="editarProcesso('{{ controle.Número_Processo }}', '{{ controle.Responsável }}')">
+                            Editar
+                        </button>
+
+                        <!-- Popup de Confirmação (Agora é específico para cada linha) -->
+                        <div id="popup-exclusao-{{ controle.Número_Processo }}" class="popup-exclusao">
+                            <div class="popup-exclusao2">
+                                <i class="bx bx-x-circle close-btn" onclick="fecharPopup('{{ controle.Número_Processo }}')"></i>
+                                <h3>Tem certeza que deseja excluir este processo?</h3>
+                                <form action="/apagar_processo" method="post">
+                                    <!-- Número do processo e responsável vão como campos ocultos -->
+                                    <input type="hidden" name="Número_Processo" value="{{ controle.Número_Processo }}">
+                                    <input type="hidden" name="Responsável" value="{{ controle.Responsável }}">
+                                    <button type="submit" style="padding: 5px 10px; background-color: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                                        Sim, Excluir
+                                    </button>
+                                    <button type="button" onclick="fecharPopup('{{ controle.Número_Processo }}')" style="padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                                        Cancelar
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            {% else %}
+                <p style="text-align:center; margin-top: 70px; color: red; font-weight: bold;">Nenhum dado disponível para exibição.</p>
+            {% endif %}
+        </table><br><br>
+        <a href="/controle_processo" class="back-button">
+            <i class='bx bxs-left-arrow-circle'></i>
+            <div style="font-size: 0.9rem;">Voltar</div>
+        </a>
+        <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+
+{% endblock %}

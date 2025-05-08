@@ -1,0 +1,50 @@
+Erro na linha 3: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: MicrosoftEdge=131.0.2903.112)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6A309DC65+12853]
+	Microsoft::Applications::Events::EventProperty::empty [0x00007FF6A33483B4+2250276]
+	Microsoft::Applications::Events::EventProperty::empty [0x00007FF6A3287696+1460486]
+	(No symbol) [0x00007FF6A2E384C7]
+	(No symbol) [0x00007FF6A2EBCBED]
+	(No symbol) [0x00007FF6A2ED0D7A]
+	(No symbol) [0x00007FF6A2EB8163]
+	(No symbol) [0x00007FF6A2E8FB54]
+	(No symbol) [0x00007FF6A2E8F000]
+	(No symbol) [0x00007FF6A2E8F741]
+	Microsoft::Applications::Events::EventProperty::empty [0x00007FF6A321CDA4+1024020]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6A2FB9A04+57108]
+	Microsoft::Applications::Events::EventProperty::empty [0x00007FF6A321BDA3+1019923]
+	Microsoft::Applications::Events::EventProperty::empty [0x00007FF6A321BA09+1019001]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A303E021+394913]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A303A944+380868]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A303AA89+381193]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A3032286+346374]
+	BaseThreadInitThunk [0x00007FFEF06C259D+29]
+	RtlUserThreadStart [0x00007FFEF16AAF38+40]
+
+Erro na linha 4: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: MicrosoftEdge=131.0.2903.112)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6A309DC65+12853]
+	Microsoft::Applications::Events::EventProperty::empty [0x00007FF6A33483B4+2250276]
+	Microsoft::Applications::Events::EventProperty::empty [0x00007FF6A3287696+1460486]
+	(No symbol) [0x00007FF6A2E384C7]
+	(No symbol) [0x00007FF6A2EBCBED]
+	(No symbol) [0x00007FF6A2ED0D7A]
+	(No symbol) [0x00007FF6A2EB8163]
+	(No symbol) [0x00007FF6A2E8FB54]
+	(No symbol) [0x00007FF6A2E8F000]
+	(No symbol) [0x00007FF6A2E8F741]
+	Microsoft::Applications::Events::EventProperty::empty [0x00007FF6A321CDA4+1024020]
+	Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6A2FB9A04+57108]
+	Microsoft::Applications::Events::EventProperty::empty [0x00007FF6A321BDA3+1019923]
+	Microsoft::Applications::Events::EventProperty::empty [0x00007FF6A321BA09+1019001]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A303E021+394913]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A303A944+380868]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A303AA89+381193]
+	Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6A3032286+346374]
+	BaseThreadInitThunk [0x00007FFEF06C259D+29]
+	RtlUserThreadStart [0x00007FFEF16AAF38+40]
+

@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<form id="inicio_processo-form">
+    <h1 id="h1_controleProcesso">Controle de Processos</h1><br><br><br>
+
+    <button type="button" class="button-cadastrar" onclick="window.location.href='/criar_controle_processo'" >Cadastrar Processo</button><br>
+
+
+    <button type="button" class="button-visualizar" onclick="window.location.href='/visualizar_controle_processo'">Visualizar Todos os Processos</button><br><br>
+
+</form>
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+
+
+{% endblock %}

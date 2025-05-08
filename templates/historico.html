@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
+
+<h1 id="h1_historico">Histórico de Operacionalizações</h1>  
+
+<form id="filtro-historico-form">
+    <div class="form-row">
+        <div class="form-group">
+            <label for="tipo_operacionalizacao" class="tipo_operacionalizacao">Tipo de Operacionalização:</label>
+            <select id="tipo_operacionalizacao" name="tipo_operacionalizacao">
+                <option value="">Todos</option>
+                {% for operacao in tipos_operacionalizacao %}
+                <option value="{{ operacao }}">{{ operacao }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="usuario" class="usuario_historico">Usuário:</label>
+            <select id="usuario_historico" name="usuario_historico">
+                <option value="">Todos</option>
+                {% for user in usuarios %}
+                <option value="{{ user }}">{{ user }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button id="btn-filtro-historico" type="submit">Filtrar</button>
+        </div>
+    </div>
+</form>
+
+<table id="history-table">
+    <thead>
+        <tr>
+            <th>Usuário</th>
+            <th>Tipo de Operacionalização</th>
+            <th>Data e Hora</th>
+            <th>Arquivo Executado</th>
+            <th>Log</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Os dados do histórico serão inseridos dinamicamente aqui -->
+    </tbody>
+</table>
+<!-- Controles de Paginação -->
+<div id="pagination-controls">
+    <div id="pagination-controls">
+        <i id="prev-page" class='bx bxs-left-arrow-circle'></i>
+        <span id="page-info">Página 1</span>
+        <i id="next-page" class='bx bxs-right-arrow-circle'></i>
+    </div>
+    
+</div>
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+{% endblock %}

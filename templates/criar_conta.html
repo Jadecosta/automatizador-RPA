@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRIAR CONTA</title>
+    <style>
+        body {
+            background-color: #5598db;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            width: 80%;
+        }
+        .image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        .image img {
+            height: 700px;
+            border-radius: 10px;
+        }
+        .login-box {
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 500px;
+        }
+        h2 {
+            margin-top: 0;
+            margin-bottom: 40px;
+            color: #5598db;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #b4b4b4;
+            border-radius: 10px;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            font-size: 16px;
+        }
+        .criar {
+            background-color: #00bf63;
+            width: 150px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image">
+            <img src="../static/cadastro.png" alt="Ilustração de login">
+        </div>
+        <div class="login-box">
+            <h2>CRIAR CONTA</h2>
+
+            
+            <form action="/salvar_usuario" method="POST">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required><br><br>
+
+                <label for="matricula">Matrícula:</label>
+                <input type="text" id="matricula" name="matricula" placeholder="Digite sua matrícula" required><br><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Digite seu email" required><br><br>
+
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" placeholder="Digite sua senha" required><br><br>
+
+                <div class="buttons">
+                    <button type="submit" class="btn criar">CONFIRMAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

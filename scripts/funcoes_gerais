@@ -1,0 +1,95 @@
+import json
+import os
+import sys
+
+
+PROGRESS_FOLDER = 'progress_files'
+
+def update_progress(task_id, progresso):
+    progress_file_path = os.path.join(PROGRESS_FOLDER, f'progress_{task_id}.json') # type: ignore
+    with open(progress_file_path, 'w') as progress_file:
+        json.dump({'task_id': task_id, 'progress': progresso}, progress_file)
+
+
+def importar_bibliotecas():
+    global os, sys, time, pd, datetime, concurrent, webdriver, Keys, By, Service, WebDriverWait, EC, Options, filedialog
+
+    import os
+    import sys
+    import time
+    import pandas as pd
+    import datetime
+    import concurrent.futures
+    from selenium import webdriver
+    from selenium.webdriver.common.keys import Keys
+    from selenium.webdriver.common.by import By
+    from selenium.webdriver.edge.service import Service
+    from selenium.webdriver.support.ui import WebDriverWait
+    from selenium.webdriver.support import expected_conditions as EC
+    from selenium.webdriver.edge.options import Options
+    from tkinter import filedialog
+
+    sys.stderr = open(os.devnull, 'w')
+    
+    print("Bibliotecas importadas e configuradas com sucesso.")
+
+
+def gravar_confirmar(driver, timeout=10):
+
+    wait = WebDriverWait(driver, timeout) 
+
+    try:
+        #BOTÃO DE 'GRAVAR'
+        gravar_button = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="vobys-form-action-buttons"]/button')))
+        gravar_button.click()
+
+        #BOTÃO DE 'CONFIRMAR'
+        confirmar_button = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="vobys-form-confirmation-save"]')))
+        confirmar_button.click()
+
+    except Exception as e:
+        print(f"Ocorreu um erro ao tentar gravar e confirmar: {e}")
+
+
+def login(driver, username, password, timeout=10):
+
+    driver.get('https://siape.sead.pi.gov.br')
+
+    wait = WebDriverWait(driver, timeout)
+
+    wait.until(EC.presence_of_element_located((By.ID, "username"))).send_keys(username)
+    driver.find_element(By.ID, "password").send_keys(password)
+    driver.find_element(By.ID, "password").send_keys(Keys.RETURN)
+    
+
+def buscar_pessoa(driver, timeout, matricula, orgao):
+    driver.get(f'https://siape.sead.pi.gov.br/adm/{orgao}/pessoas')
+    driver.implicitly_wait(timeout)
+    try:
+        campo_matricula = driver.find_element(By.XPATH, '//*[@id="matricula"]/div/div[3]/input')
+        campo_matricula.click()
+        campo_matricula.send_keys(str(matricula))
+        time.sleep(4)
+        driver.find_element(By.XPATH, '//*[@id="pesquisaNormal"]/div/div[6]/button').click()
+        time.sleep(4)
+        driver.find_element(By.XPATH, '//*[@id="resultadoDaBuscaDePessoas"]/div[1]/table/tbody/tr[1]/td[1]/a').click()
+        time.sleep(4)
+        print(f"Servidor com matrícula {matricula} e órgão {orgao} foi encontrado e selecionado com sucesso.")
+    except Exception as e:
+        print(f"Erro ao buscar ou selecionar servidor: {e}")
+
+driver = webdriver.Edge(service=edge_service, options=edge_options)
+#criar função para iniciar o webdrive
+# Carregar a planilha
+file_path = 'modelo.xlsx'  
+df = pd.read_excel(file_path)
+
+for index, row in df.iterrows():
+    orgao = row['ORGAO']       
+    matricula = row['MATRICULA']  
+    
+    # Chamar a função para buscar e selecionar a pessoa por órgão e matrícula
+    buscar_pessoa(driver, orgao, matricula)
+
+# Fechar o driver após todas as operações
+driver.quit()

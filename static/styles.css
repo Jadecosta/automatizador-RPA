@@ -1,0 +1,1423 @@
+/*ESTILIZAÇÃO MENU*/
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eff7ff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.navbar {
+    width: 250px;
+    background-color: #fcb814;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+
+.navbar-title {
+    color: #0d4da1;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+#image-navbar{
+    margin-left: 70px;
+    height: 70px;
+}
+
+.navbar-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.navbar-menu a {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    color: #0d4da1;
+    text-decoration: none;
+    padding: 13px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navbar-menu a i {
+    margin-right: 10px;
+    font-size: 18px; 
+}
+
+.navbar-menu a span {
+    flex: 1;
+}
+
+.navbar-menu a:hover {
+    background-color: #0d4da1;
+    color: #fff;
+    font-weight: bold;
+}
+
+
+/*ESTILIZAÇÃO PÁGINAS*/
+
+.content {
+    margin-left: 240px; 
+    padding: 20px;
+    width: calc(100% - 240px); 
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #333;
+    font-weight: 500;
+    text-align: center;
+}
+.h1-operacionalizacao, #h1_controleProcesso, #h1_visualizar{
+    color: #ffffff;
+    background-color: #0d4da1;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-align: center !important;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    width: 60%;
+    margin: 5px auto;
+}
+
+.h1-calculadora{
+    color: #ffffff;
+    background-color: #0d4da1;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-align: center !important;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    width: 60%;
+    margin: 5px auto;
+}
+
+label {
+    display: block;
+    color: #000000;
+    
+}
+
+label[for="module"], [for="operation-type"], [for="username"], [for="password"] {
+    display: block;
+    margin-top: 5px !important;
+}
+
+ #Tipo, #orgaos-dropdown, #periodo, #tipo, #status, #responsavel{
+    width: 100%;
+    max-width: 450px;
+    height: 43px;
+    font-size: 16px;
+    border: 1px solid #00408d;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding-right: 40px; 
+}
+#module, #operation-type, #base_calc, #cpf_calc, #matricula_calc, #nome_calc,
+#liquido_calc, #cet_calc, #orgaos_calc, #dias_restituir{
+    width: 100%;
+    max-width: 450px;
+    height: 43px;
+    font-size: 16px;
+    border: 1px solid #0d4da1 !important;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding-right: 40px; 
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaço entre checkbox e texto */
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Caixa visual da checkbox */
+.checkbox-container .checkmark {
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 2px solid #0d4da1;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+}
+
+/* Marcado */
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #0d4da1;
+}
+
+/* Ícone de check */
+.checkbox-container .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 7px;
+    top: 4px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+
+#btn-filtro-responsavel{
+    display: block;
+    margin-top: 40px;
+    margin-left: 150px;
+    width: 80px;
+    color: #fff;
+    background-color: #5598db;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+#btn-filtro-historico{
+    display: block;
+    margin-top: 48px;
+    width: 80px;
+    color: #fff;
+    background-color: #5598db;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+#btn-filtro-historico:hover{
+    background-color: #0c65bd;
+    color: #fff;
+    font-weight: bold;
+}
+
+#btn-filtro{
+    display: block;
+    margin-top: 40px;
+    width: 80px;
+    color: #fff;
+    background-color: #5598db;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+#orgao{
+    width: 380px;
+    height: 43px;
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #00408d;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding-right: 40px; 
+}
+
+#tabelas{
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    height: 43px;
+    font-size: 16px;
+    border: 1px solid #919191;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+}
+
+#mes, #ano{
+    width: 200px; 
+    height: 30px;
+    padding: 10px;       
+    font-size: 14px;     
+    border: 1px solid #00408d;                        
+    border-radius: 5px;  
+    margin-top: 10px;
+    margin-left: 22px;
+}
+#feriasGozadas{
+    width: 200px; 
+    height: 30px;
+    padding: 10px;       
+    font-size: 14px;     
+    border: 1px solid #00408d;                        
+    border-radius: 5px;  
+}
+
+#dropdownTabelasButton{
+    border: 1px solid #00408d;                        
+    border-radius: 5px; 
+}
+
+#drop{
+    width: 500px;
+    margin-left: 25px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    height: 43px;
+    font-size: 16px;
+    border: 1px solid #919191;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+}
+#label-drop{
+    margin-left: 22px;
+    color: #00408d;
+    font-family: 'Montserrat', sans-serif;
+}
+#label-mes, #label-ano{
+    margin-left: 22px;
+    
+}
+
+
+#responsavel-popup{
+    width: 100%;
+    max-width: 450px;
+    height: 43px;
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #8a8a8a;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding-right: 40px;
+    
+}
+
+.bold-label {
+    font-weight: bold;
+    color: #00408d;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.usuario_historico, .tipo_operacionalizacao {
+    font-weight: bold;
+    margin-top: 3px;
+}
+
+#module option {
+    background-color: #fff; 
+    color: #333; 
+    font-size: 16px; 
+}
+#operation-type, #matricula, #admissao, #termino, #numero_processo, #teor, 
+#numero_servidor, #diferenca, #valor, #responsavel, #processo, #mes-filtro ,#tipo_operacionalizacao, 
+#periodo_mes, #periodo_ano, #nova_senha, #confirmar_senha, #exclusao{
+    background-color: #fff; 
+    color: #333; 
+    font-size: 16px; 
+    border: 1px solid #00408d;
+    border-radius: 8px;
+}
+#username, #password{
+    background-color: #fff; 
+    color: #333; 
+    font-size: 16px; 
+    border: 1px solid #0d4da1;
+    border-radius: 8px;
+}
+
+#filtro-processo{
+    background-color: #fff; 
+    color: #333; 
+    font-size: 16px; 
+    border: 1px solid #a0a0a0;
+    border-radius: 8px;
+}
+
+#usuario_historico{
+    background-color: #fff; 
+    color: #333; 
+    font-size: 16px;
+    margin-top: 20px;
+    border: 1px solid #00408d;                        
+    border-radius: 8px;
+}
+
+#module:hover {
+    background-color: #f0f0f0;
+}
+#operation-type:hover {
+    background-color: #f0f0f0;
+}
+.centered-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+                                                                                                                     
+#operationalization-form, #uploadForm, #redefinir_form {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+#indenizacao-form{
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+#comparativo-form{
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+#responsavel_processo-form, #filtro-historico-form{
+    width: 100%;
+    max-width: 550px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+
+select, input[type="text"], input[type="password"], button {
+    width: 100%;
+    max-width: 400px;
+    height: 30px;
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #e7e7e7;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding-right: 40px;
+}
+
+input[type="file"]{
+    width: 100%;
+    max-width: 400px;
+    height: 25px;
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding-right: 40px;
+}
+
+
+select:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="file"]:focus, button:focus {
+    outline: none;
+}
+
+select:hover, input[type="text"]:hover, input[type="password"]:hover, input[type="file"]:hover, button:hover {
+    background-color: #e0e0e0;
+}
+
+button {
+    max-width: 350px;
+    height: 40px;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #3eda46;
+}
+ .button-salvar, .button-calculo, .button-processar, .button-visualizar, .button-cadastrar, .button-editar{
+    background-color: #2067af;   
+    color: white;   
+    margin-top: 1px;  
+    margin-bottom: 30px;    
+    height: 45px;         
+    border: none;                  
+    border-radius: 5px;            
+    cursor: pointer;              
+    transition: background-color 0.3s ease; 
+}
+.button-start{
+    background-color: #0d4da1; 
+    color: white;   
+    margin-top: 1px;  
+    margin-bottom: 30px;    
+    height: 45px;         
+    border: none;                  
+    border-radius: 5px;            
+    cursor: pointer;              
+    transition: background-color 0.3s ease; 
+}
+.button-start:hover{
+    background-color: #2067af;
+    text-shadow: 0 0 8px rgba(59, 59, 59, 0.7), 0 0 20px rgba(59, 59, 59,  0.5), 0 0 30px rgba(59, 59, 59, 0.3);
+    color: #ffffff;   
+     
+}
+
+.button-salvar:hover, .button-calculo:hover, .button-processar:hover, .button-visualizar:hover, .button-cadastrar:hover, .button-editar:hover{
+    background-color: #fcb814;  
+    color: #fff;
+
+
+}
+
+#button-aba1{    
+    background-color: #2067af;
+    margin-top: 40px;
+    margin-left: 200px;
+    height: 50px; 
+    color: white;   
+    border: none;                  
+    border-radius: 5px;            
+    cursor: pointer;              
+    transition: background-color 0.3s ease; 
+    font-size: 14px;
+}
+
+#button-aba1:hover{
+    background-color: #00408d; 
+}
+
+/* Mudar apenas a cor dos títulos do optgroup */
+optgroup[label="FOLHA ABERTA"],
+optgroup[label="FOLHA FECHADA"] {
+    color: rgb(0, 0, 0); /* Cor do texto */
+    font-weight: bold; /* Deixa em negrito */
+    font-size: 16px; /* Ajusta o tamanho da fonte */
+}
+
+
+
+.button-stop {
+    background-color: #ef3e22;   
+    height: 46px; 
+    width: 380px; 
+    color: white;  
+    margin-top: 1px;  
+    margin-bottom: 10px;             
+    border: none;                  
+    border-radius: 5px;            
+    cursor: pointer;              
+    transition: background-color 0.3s ease; 
+}
+
+.button-stop:hover {
+    background-color: #e00218;     
+}
+
+progress {
+    width: 95%;
+    height: 30px;
+    margin: 10px 0;
+}
+
+#file-upload {
+    width: 380px;
+    display: inline-block;
+    margin: 0px auto;
+    padding: 8px 20px;
+    border-radius: 5px;
+    border: 2px solid #0d4da1;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 15px;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    color: #333;
+    white-space: normal;
+    line-height: 1.5;
+    border-left: 1px solid #ccc; 
+    width:50px;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: 600;
+    
+}
+
+td {
+    background-color: #f2f2f2;
+    font-weight: 600;
+    
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Zebra striping para linhas */
+}
+#history-table, #processo-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    white-space: normal;
+    margin-left: 60px; 
+    
+    
+}
+
+#history-table th, #history-table td, #processo-table th, #processo-table td{
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    flex-wrap: wrap;
+    text-align: left;
+    color: #333;
+}
+
+#history-table th, #processo-table th{
+    background-color: #fcb814;
+    font-weight: 500;
+    flex-wrap: wrap;
+}
+
+
+@media screen and (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .navbar-menu {
+        margin-top: 10px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .navbar-menu a {
+        padding: 10px;
+    }
+
+    .container {
+        margin-top: 10px;
+    }
+}
+
+/* Estilização do botão Baixar modelo */
+.download-button {
+    display: inline-block !important;
+    width: 80px;
+    margin: 0px auto;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #5598db;
+    border-radius: 5px;
+    display: inline;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.download-button:hover, .downloadOpera-button:hover{
+    background-color: #5598db;
+    transform: scale(1.05);
+}
+
+.download-button:active, .downloadOpera-button:active {
+    background-color: #5598db;
+    transform: scale(1);
+}
+
+.downloadOpera-button{
+    display: none;
+    width: 150px;
+    margin: 0px 0px 0px 320px;
+    padding: 10px 20px;
+    color: #fff;
+    background-color:#0d4da1;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/*ESTILIZAÇÃO PÁGINA IAPEP */
+.mensagem, #uploadForm{
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+#arquivo1, #arquivo2{
+    text-align: center;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+
+label {
+    display: block;
+    margin-top: 15px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/*ESTILIZAÇÃO PÁGINA CÁLCULOS */
+
+.input-group {
+    display: flex;
+    align-items: center; /* Alinha os itens verticalmente */
+    gap: 20px;           /* Espaço entre os elementos */
+}
+
+#label_matricula{
+    text-align: left;
+    color: #0d4da1;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#h1_calculo{
+    color: #ffffff;
+    background-color: #0d4da1;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-align: center !important;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    width: 70%;
+    margin: 25px auto;
+}
+
+
+#matricula {
+    padding: 5px 10px;
+    margin-top: 20px;
+    font-size: 14px;
+    border: 1px solid #00408d;
+    border-radius: 5px;
+    width: 850px;
+}
+
+#buscar {
+    padding: 5px;
+    margin-top: 20px;
+    font-size: 14px;
+    background-color: #2067af;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 250px;
+}
+
+#buscar:hover {
+    background-color: #00408d;
+}
+
+#calculo-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    word-break: break-word;
+    white-space: normal;
+    margin-left: 60px; 
+    padding: 20px;
+    width: calc(100% - 60px); 
+    display: none;
+}
+
+#calculo-table[style="display: table;"] {
+    display: table;  /* Exibe a tabela quando os dados são preenchidos */
+}
+
+#calculo-table th, #calculo-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    color: #333;
+}
+
+#calculo-table th {
+    background-color: #f2f2f2;
+    font-weight: 500;
+}
+
+#salvar-dados {
+    position: fixed; 
+    bottom: 50px;    
+    right: 50px;     
+    padding: 10px 20px;
+    width: 200px;
+    background-color: #2067af; 
+    color: white;             
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+#salvar-dados:hover {
+    background-color: #00408d;
+}
+
+.button-calculo{
+    display: block !important;
+    width: 400px;
+    margin: 0px auto;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #2067af;
+    border-radius: 5px;
+    display: inline;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button-calculo:hover{
+    background-color: #00408d;
+}
+/*ESTILIZAÇÃO CALCULADORA*/
+#h1-calculadora{
+    color: #ffffff;
+    background-color: #0d4da1;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-align: center !important;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    width: 80%;
+    margin: 5px auto;
+}
+
+#base_calc{
+    background-color: #fff;
+    margin-top: 20px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#base_calc_label, #tipo_calc_label, #orgao_calc_label{
+    color: #00408d;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#Tipo_servidor{
+    margin-bottom: 15px !important;
+}
+
+#download_processo{
+    padding: 5px;
+    font-size: 14px;
+    background-color: #2067af;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 90px;
+    float: right;
+    margin: 35px 200px 18px 0;
+}
+
+/* ESTILIZAÇÃO POP-UP */
+
+.popup {
+    display: none; 
+    position: fixed;
+    top: 40%;
+    left: 20;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 60%;
+    max-width: 800px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.button-container {
+    width: 100%;
+    text-align: center; /* Centraliza o botão */
+}
+
+.button-buscar {
+    width: 100%;
+    padding: 10px;
+    background-color: #2067af;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+
+.popup-content label {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.popup-content input {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+
+.close-btn {
+    font-size: 25px;
+    color: red;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.button-buscar{
+    padding: 5px;
+    font-size: 14px;
+    background-color: #2067af;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 200px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.button-buscar:hover{
+    background-color: #00408d;
+}
+
+
+/*ESTILIZAÇÃO CADASTRO DE PROCESSO*/
+
+/* Estilo do formulário */
+#processo-form {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+#inicio_processo-form{
+    width: 100%;
+    max-width: 970px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    margin-right: 10px;
+}
+
+.form-group {
+    flex: 1; 
+    margin-right: 20px;
+    min-width: 200px; 
+    font-family: 'Montserrat', sans-serif;
+}
+
+.form-row label {
+    flex: 1 1 100%;
+    margin-bottom: 5px;
+    color: #0d4da1;
+}
+
+.form-row select,
+.form-row input {
+    flex: 1 1 calc(50% - 10px);
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-row select:last-child,
+.form-row input:last-child {
+    margin-right: 0;
+}
+
+.button-salvar {
+    display: block;
+    margin: 0px auto;
+    padding: 10px 20px;
+    background-color: #2067af; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+.button-salvar:hover {
+    background-color: #00408d;
+}
+select {
+    width: 100%; 
+    height: 40px; 
+    padding: 5px 10px; 
+    font-size: 16px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+}
+
+input{
+    width: 100%; 
+    height: 42px !important; 
+    font-size: 16px; 
+    border: 1px solid #ccc; 
+    border-radius: 6px !important; 
+    box-sizing: border-box; 
+}
+
+/*ESTILIZAÇÃO VISUALIZAR RESPONSAVEL*/
+#btn-editar{
+    padding: 5px 10px; 
+    background-color: #23CF5C;
+    color: white; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer;
+}
+
+#btn-editar:hover{
+    background-color: #1ba346;
+}
+
+#btn-excluir{
+    padding: 5px 10px; 
+    background-color: #D12C38;
+    color: white; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer;
+}
+#btn-excluir:hover{
+    background-color: #f44336; 
+}
+
+/* Estilo para o popup */
+.popup-exclusao{
+    display: none; /* Escondido inicialmente */
+    position: fixed;
+    top: 50%; /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta para garantir que o popup esteja centralizado */
+    width: auto; /* Largura fixa para o popup */
+    height: auto; /* Altura automática conforme o conteúdo */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Garantir que o popup esteja acima de outros elementos */
+}
+
+.popup-exclusao2 {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+    border: 2px solid #b1b1b1;
+}
+
+.popup-content h3 {
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+button {
+    margin: 10px;
+}
+
+#voltar{
+    text-align: center;
+    padding: 5px 5px 5px 5px;
+    margin: 60px 0 0px 600px;
+    text-decoration: none;
+    color: #fd0101;
+    font-weight: bold;
+    border: 2px solid #fd0101;
+}
+
+#voltar-processo{
+    text-align: center;
+    padding: 5px 5px 5px 5px;
+    margin: 100px 0 0px 600px;
+    text-decoration: none;
+    color: #fd0101;
+    font-weight: bold;
+    border: 2px solid #fd0101;
+}
+
+#pagination-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+#pagination-controls i {
+    font-size: 40px; 
+    color: #007bff; 
+    cursor: pointer; 
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+#pagination-controls i:hover {
+    transform: scale(1.1); 
+    color: #0056b3; 
+}
+
+#pagination-controls i:disabled {
+    color: #ccc; 
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.back-button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    font-size: 1rem;
+}
+
+.back-button i {
+    font-size: 2.5rem;
+    color: #007bff;
+    transition: transform 0.2s;
+}
+
+.back-button:hover i {
+    transform: scale(1.1);
+    color: #0056b3;
+}
+
+.logout-container {
+    position: absolute;
+    bottom: 50px; 
+    left: 70%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 25px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    background-color: #ff0000; 
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 120px;
+    transition: 0.3s;
+}
+
+.logout-btn i {
+    margin-right: 8px;
+}
+
+.logout-btn:hover {
+    background-color: #ff3e3e; 
+}
+
+form label {
+    display: block; 
+    text-align: left; 
+    font-weight: bold; 
+    margin-bottom: 5px; 
+}
+
+#btn-redefinir{
+    background-color: #2067af;   
+    color: white;   
+    margin-left: 200px;
+    margin-top: 20px;  
+    margin-bottom: 20px;    
+    height: 45px;         
+    border: none;                  
+    border-radius: 5px;            
+    cursor: pointer;              
+    transition: background-color 0.3s ease; 
+}
+
+#btn-redefinir:hover{
+    background-color: #00408d;     
+}
+
+
+#h1_comparativo, #h1_historico, #h1_cadastroProcesso{
+    color: #ffffff;
+    background-color: #0d4da1;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-align: center !important;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    width: 60%;
+    margin: 5px auto;
+}
+.dropdown-container {
+    position: relative;
+    width: 450px;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+.dropdown-button {
+    width: 100%;
+    background: white;
+    border: 1px solid #00408d;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+}
+.dropdown-button i {
+    font-size: 20px;
+}
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    width: 400px;
+    max-height: 300px; 
+    overflow-y: auto; 
+    background: white;
+    border: 1px solid #ccc;
+    border-top: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+.dropdown-menu.active {
+    display: block;
+}
+.dropdown-menu li {
+    list-style: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.dropdown-menu li:hover {
+    background: #2067af;
+    color: white;
+    border-radius: 8px;
+}
+.dropdown-menu optgroup {
+    font-weight: bold;
+    color: #00408d;
+    padding: 10px;
+    background-color: #f3f3f3;
+}
+.dropdown-menu option {
+    padding-left: 15px;
+}
+
+/* Estilização do contêiner do dropdown */
+.dropdown-container-tabelas {
+    display: inline-block;
+    width: 200px; 
+}
+
+/* Botão do dropdown */
+.dropdown-button-tabelas {
+    margin-left: 1px;
+    width: 200px;
+    background-color: #ffffff; 
+    border: 1px solid #ccc; 
+    border-radius: 8px;
+    text-align: left;
+    font-size: 14px;
+    color: #333; 
+    font-weight: normal;
+}
+.dropdown-button-tabelas:hover{
+    background-color: #ffffff; 
+    color: #333;
+}
+
+/* Ícone dentro do botão */
+.dropdown-button-tabelas i {
+    float: right;
+}
+
+/* Estilização da lista de opções */
+.dropdown-menu-tabelas {
+    position: absolute;
+    width: 200px; 
+    max-height: 150px; 
+    overflow-y: auto; 
+    background-color: #ffffff; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Exibir o menu quando estiver ativo */
+.dropdown-menu-tabelas.active {
+    display: block;
+}
+
+/* Estilização dos itens do dropdown */
+.dropdown-menu-tabelas li {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Efeito hover nos itens */
+.dropdown-menu-tabelas li:hover {
+    background: #2067af;
+    color: white;
+    border-radius: 5px;
+}
+
+#btn-salvar-ind{
+    background-color: #2067af;   
+    color: white;  
+    width: 200px; 
+    margin-left: 1000px;
+    margin-top: 20px;  
+    margin-bottom: 20px;    
+    height: 45px;         
+    border: none;                  
+    border-radius: 5px;            
+    cursor: pointer;              
+    transition: background-color 0.3s ease; 
+}
+#btn-salvar-ind:hover{
+    background-color: #00408d; 
+}
+
