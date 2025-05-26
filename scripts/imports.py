@@ -1,4 +1,3 @@
-conexao = 'ATI_DANIEL/mJ9VHj905UDC@sc01-c1-scan.ati.pi.gov.br:1521/VOBYSP'
 
 # Lista de nomes de tabelas 'INATIVOS_PENSIONISTAS', 'INATIVOS_SEDUC', 'INATIVOS_TCE', 'PENSIONISTAS', 'PIAUIPREV'
 swtabelas = ['ADAPI', 
